@@ -116,5 +116,28 @@ class="badge">0</span></div>
 <div class="team-data-label">Осталось  жизней: <span id="stLifes"
 class="badge">5</span></div>
 </div>
+
+<div class="right">
+    <textarea class="log-box dark" id="log" readonly></textarea>
+    </div>
+    <div class="center">
+    <canvas id="map" class="map"></canvas>
+    </div>
+    <div class="footer text-center">
+    <div class="btn-group dialog-group dark">
+    <button id="btnStart" class="btn-green" onclick="start()">Старт</button>
+    <button id="btnStop" class="btn-dialog" onclick="stop()">Стоп</button>
+    <button id="btnJoin" class="btn-dialog"
+    onclick="join()">Подключение</button>
+    <button id="btnLeave" class="btn-dialog"
+    onclick="leave()">Отключение</button>
+    <button id="btnReconnect" class="btn-dialog"
+    onclick="reconnect()">Перезапуск</button>
+    <button id="btnCancel" class="btn-warn" onclick="cancel()">Отменить
+    игру</button>
+    <button id="btnExit" class="btn-warn" onclick="exit()">Выход</button>
+    </div>
+    </div>
+    </div>
 </body>
 </html>
