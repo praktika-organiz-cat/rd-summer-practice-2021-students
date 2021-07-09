@@ -1,11 +1,8 @@
-body 
-{
-    background-color: #c0adc2b7;
-}
 
 body {
     margin: 0;
     padding: 0;
+	background-color: #c0adc2b7;
     }
     a, li, button {
     cursor: pointer;
@@ -35,9 +32,12 @@ body {
     .header {
     margin: 0 1% 0 1%;
     border-bottom: 1px solid rgb(163, 25, 140);
-    top: 0; left: 0; right: 0;
+    top: 0; 
+	left: 0; 
+	right: 0;
     height: 15%;
     text-align: center;
+    font-family: 'Franklin Gothic Medium', Courier, monospace;
     }
     .center {
     top: 15%; left: 225px; right: 225px; bottom: 6%;
@@ -87,6 +87,7 @@ body {
     }
     .team-data-label {
     font-size: 110%;
+    font-family: 'Franklin Gothic Medium', Courier, monospace;
     }
     .team-caption {
     font-size: 100%;
@@ -98,9 +99,7 @@ body {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    }
-    .team-data-value {
-  
+    font-family: 'Franklin Gothic Medium', Courier, monospace;
     }
     .log-box {
     width: 100%;
