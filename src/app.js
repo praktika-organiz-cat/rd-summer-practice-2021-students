@@ -896,7 +896,7 @@
                      * TODO Task 4. Вместо event.keyCode начните использовать event.key
                      */
                     switch (event.key) {
-                        case Space :
+                        case  Space :
                             event.preventDefault();
                             this.state.game.stopMoving();
                             break;
