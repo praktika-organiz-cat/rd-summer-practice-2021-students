@@ -1,11 +1,8 @@
-body 
-{
-    background-color: #c0adc2b7;
-}
 
 body {
     margin: 0;
     padding: 0;
+	background-color: #c0adc2b7;
     }
     a, li, button {
     cursor: pointer;
