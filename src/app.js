@@ -760,20 +760,21 @@
                 return {
                     // $gameCaption: ,
                     // $switchTimer: ,
-                    // team1: {
-                    //     $container: ,
-                    //     $caption: ,
-                    //     $players: ,
-                    //     $lives: ,
-                    //     $coins:
-                    // },
-                    // team2: {
-                    //     $container: ,
-                    //     $caption: ,
-                    //     $players: ,
-                    //     $lives: ,
-                    //     $coins:
-                    // },
+                    team1: {
+                        //$container: ,
+                        $caption: $('#ftName'),
+                        //$players: ,
+                        $lives: $('#ftLifes'),
+                        $coins: $('#ftScore'),
+                        },
+                    team2: {
+                        //$container: ,
+                        $caption: $('#stName'),
+                        //$players: ,
+                        $lives: $('#stLifes'),
+                        $coins: $('#stScore'),
+                        },
+                       
                     // mapBuffer: null,
                     // $mapCanvas: ,
                     // mapCellSize: 25
@@ -795,19 +796,20 @@
             function getImages() {
                 // TODO Task1.3 Объявление переменных и их связка с DOM
                 return {
-                    // imgHeart: ,
-                    // imgCoin: ,
-                    // imgPolice: ,
-                    // imgPoliceSelf: ,
-                    // imgThief: ,
-                    // imgThiefSelf: ,
-                    // imgSwitch:
+                    imgHeart: $('#img_heart').get(0),
+                    imgCoin: $('#img_Coin').get(0),
+                    imgPolice: $('#img_Police').get(0),
+                    imgPoliceSelft: $('#img_PoliceSelft').get(0),
+                    imgThief: $('#img_Thief').get(0),
+                    imgThiefSelf: $('#img_ThiefSelf').get(0),
+                    imgSwitch: $('#img_Switch').get(0)
                 };
             }
             function setMapCanvasSizing($canvas, width, height) {
                 /**
                  * TODO Task 2. Опишите функцию которая задаст размеры игрового поля
                  */
+                 <canvas id="map" width=​"300" height="300"></canvas>; //скорее всего неправильно, видим JS первый раз в жизни)))
                 return $canvas;
             }
             function drawMapField(canvas, map, width, height, cellSize) {
@@ -894,24 +896,24 @@
                     /**
                      * TODO Task 4. Вместо event.keyCode начните использовать event.key
                      */
-                    switch (event.keyCode) {
-                        case 32:
+                    switch (event.key) {
+                        case  Space :
                             event.preventDefault();
                             this.state.game.stopMoving();
                             break;
-                        case 37:
+                        case ArrowLeft:
                             event.preventDefault();
                             this.state.game.beginMove(GameApi.MoveDirection.left);
                             break;
-                        case 38:
+                        case ArrowUp:
                             event.preventDefault();
                             this.state.game.beginMove(GameApi.MoveDirection.top);
                             break;
-                        case 39:
+                        case ArrowRight:
                             event.preventDefault();
                             this.state.game.beginMove(GameApi.MoveDirection.right);
                             break;
-                        case 40:
+                        case ArrowDown:
                             event.preventDefault();
                             this.state.game.beginMove(GameApi.MoveDirection.bottom);
                             break;
