@@ -758,26 +758,27 @@
                  *  можно использовать $('selector')
                  */
                 return {
-                    // $gameCaption: ,
-                    // $switchTimer: ,
+                    
+                   // $gameCaption:
+                    $switchTimer: $('#switcjtimerid'),
                     team1: {
-                        //$container: ,
+                        $container: $('#containerid1'),
                         $caption: $('#ftName'),
                         //$players: ,
                         $lives: $('#ftLifes'),
                         $coins: $('#ftScore'),
                         },
                     team2: {
-                        //$container: ,
+                        $container: $('#containerid2'),
                         $caption: $('#stName'),
                         //$players: ,
                         $lives: $('#stLifes'),
                         $coins: $('#stScore'),
                         },
                        
-                    // mapBuffer: null,
+                     mapBuffer: null,
                     // $mapCanvas: ,
-                    // mapCellSize: 25
+                     mapCellSize: 25
                 };
             }
             function getButtons() {
