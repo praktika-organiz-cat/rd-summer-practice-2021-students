@@ -759,7 +759,7 @@
                  */
                 return {
                     
-                   // $gameCaption:
+                   $gameCaption: $('gameCaption'),
                     $switchTimer: $('#progressBar'),
                     team1: {
                         $container: $('#containerid1'),
