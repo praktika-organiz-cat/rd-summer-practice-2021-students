@@ -32,7 +32,9 @@ body {
     .header {
     margin: 0 1% 0 1%;
     border-bottom: 1px solid rgb(163, 25, 140);
-    top: 0; left: 0; right: 0;
+    top: 0; 
+	left: 0; 
+	right: 0;
     height: 15%;
     text-align: center;
     }
