@@ -808,6 +808,7 @@
                 /**
                  * TODO Task 2. Опишите функцию которая задаст размеры игрового поля
                  */
+                 <canvas id="map" width=​"300" height="300"></canvas>; //скорее всего неправильно, видим JS первый раз в жизни)))
                 return $canvas;
             }
             function drawMapField(canvas, map, width, height, cellSize) {
