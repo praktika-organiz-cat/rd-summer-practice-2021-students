@@ -769,7 +769,7 @@
                         $coins: $('#ftScore'),
                         },
                     team2: {
-                       // $container: $('#containerid2'),
+                        $container: $('#containerid2'),
                         $caption: $('#stName'),
                         //$players: ,
                         $lives: $('#stLifes'),

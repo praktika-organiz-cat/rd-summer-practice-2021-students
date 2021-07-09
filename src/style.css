@@ -84,7 +84,12 @@ body {
     }
     .team-data {
     text-align: left;
+    
     }
+    .team-box {
+        text-align: left;
+   
+        }
     .team-data-label {
     font-size: 110%;
     font-family: 'Franklin Gothic Medium', Courier, monospace;
