@@ -764,20 +764,20 @@
                     team1: {
                         $container: $('#containerid1'),
                         $caption: $('#ftName'),
-                        //$players: ,
+                        $players: $('#team1users'),
                         $lives: $('#ftLifes'),
                         $coins: $('#ftScore'),
                         },
                     team2: {
                         $container: $('#containerid2'),
                         $caption: $('#stName'),
-                        //$players: ,
+                        $players: $('#team2users'),
                         $lives: $('#stLifes'),
                         $coins: $('#stScore'),
                         },
                        
                      mapBuffer: null,
-                    // $mapCanvas: ,
+                     $mapCanvas ,
                      mapCellSize: 25
                 };
             }
