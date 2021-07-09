@@ -801,7 +801,7 @@
                     imgPoliceSelft: $('#img_PoliceSelft').get(0),
                     imgThief: $('#img_Thief').get(0),
                     imgThiefSelf: $('#img_ThiefSelf').get(0),
-                    imgSwitch: $('#img_Switch').get(0),
+                    imgSwitch: $('#img_Switch').get(0)
                 };
             }
             function setMapCanvasSizing($canvas, width, height) {
