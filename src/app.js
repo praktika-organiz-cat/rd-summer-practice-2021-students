@@ -760,7 +760,7 @@
                 return {
                     
                    // $gameCaption:
-                    $switchTimer: $('#switcjtimerid'),
+                    $switchTimer: $('#progressBar'),
                     team1: {
                         $container: $('#containerid1'),
                         $caption: $('#ftName'),
