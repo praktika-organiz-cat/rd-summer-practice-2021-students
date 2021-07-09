@@ -784,15 +784,26 @@
             function getButtons() {
                 // TODO Task1.2 Объявление переменных и их связка с DOM
 
+             /*   <button id="btnList" class="btn-green" onclick="">К списку игр</button>
+                <button id="btnStart" class="btn-green" onclick="">Старт</button>
+                <button id="btnStop" class="btn-green" onclick="">Пауза</button>
+                <button id="btnJoin" class="btn-dialog"onclick="">Подключение</button>
+                <button id="btnPolice" class="btn-dialog"onclick="">Подключение к полиции</button>
+                <button id="btnThieves" class="btn-dialog"onclick="">Подключение к мошенникам</button>
+               <!--  <button id="btnLeave" class="btn-dialog"onclick="">Отключение</button>
+                <button id="btnReconnect" class="btn-dialog"onclick="">Перезапуск</button> -->
+                <button id="btnCancel" class="btn-warn" onclick="">Отменить игру</button>
+                <button id="btnExit" class="btn-warn" onclick="">Выход</button> */
+
                 return {
-                    // $btnGameList: $('#stScore'),
-                    $btnStart:$('#btnStart'),
-                    $btnConnect:$('#btnJoin'),
-                    // $btnConnectPolice:$('#stScore'),
-                    // $btnConnectThief:$('#stScore'),
-                    $btnLeave:$('#btnExit'),
-                    $btnPause:$('#btnStop'),
-                    $btnCancel:$('#btnCancel'),
+                    $btnGameList: $('#stbtnList'), //К списку игр
+                    $btnStart:$('#btnStart'),   //Старт
+                    $btnConnect:$('#btnJoin'), //Подключение
+                    $btnConnectPolice:$('#btnPolice'), //Подключение к полиции
+                    $btnConnectThief:$('#btnThieves'), //Подключение к мошенницам
+                    $btnLeave:$('#btnExit'), //Выход
+                    $btnPause:$('#btnStop'), //Пауза
+                    $btnCancel:$('#btnCancel'), //Отменить игру
                 };
             }
             function getImages() {
@@ -811,7 +822,7 @@
                 /**
                  * TODO Task 2. Опишите функцию которая задаст размеры игрового поля
                  */
-                // <canvas id="map" width=​"300" height="300"></canvas>; //скорее всего неправильно, видим JS первый раз в жизни)))
+                // <canvas id="map" width=​"300" height="300"></canvas>; //тег добавлен в html файл
                 $canvas.width=width;
                 $canvas.style.width=width;
                 $canvas.height=height;
