@@ -1020,7 +1020,7 @@
                 this.game.$gameCaption
                     .empty()
                     .append($(app.utils.t(
-                        "<div class='game-caption-name'>{name} <span class='game-caption-status game-caption-status-{status}'>{statusName}</span></div>",
+                        "<div class='game-caption-name'> {name} <span class='game-caption-status game-caption-status-{status}'>{statusName}</span></div>",
                         {name: name, status: status, statusName: app.utils.getStatusName(status)})));
             };
             GameView.prototype.setTimer = function (data) {
@@ -1139,16 +1139,25 @@
                 /**
                  * TODO: Task 9. Опишите доступность элементов при загрузке игры $container $error $loading
                  */
+                utils.removeClasses($loading, 'hidden') //тк ShowLoading
+                utils.addClasses($containerGame, 'hidden')
+                utils.addClasses($error, 'hidden')
             };
             GameView.prototype.showError = function () {
                 /**
                  * TODO: Task 10. Опишите доступность элементов при загрузке игры $container $error $loading
                  */
+                 utils.addClasses($loading, 'hidden') 
+                 utils.removeClasses($containerGame, 'hidden') //тк ShowError
+                 utils.addClasses($error, 'hidden')
             };
             GameView.prototype.show = function () {
                 /**
                  * TODO: Task 11. Опишите доступность элементов при загрузке игры $container $error $loading
                  */
+                 utils.addClasses($loading, 'hidden') 
+                 utils.addClasses($containerGame, 'hidden') 
+                 utils.removeClasses($error, 'hidden') //тк Show
             };
 
             return GameView;
