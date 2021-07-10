@@ -888,14 +888,14 @@
                 var btns = this.btns;
                 var $lastKey = -1;
 
-                $btnGameList.addEventListener('click', this.goToGameList.bind(this));       // btns.$btnGameList.
-                $btnStart.addEventListener('click', this.startGame.bind(this));             // btns.$btnStart.
-                $btnConnect.addEventListener('click', this.joinAsRandom.bind(this));        // btns.$btnConnect.
-                $btnConnectPolice.addEventListener('click', this.joinAsPolice.bind(this));  // btns.$btnConnectPolice.
-                $btnConnectThief.addEventListener('click', this.joinAsThief.bind(this));    // btns.$btnConnectThief.
-                $btnLeave.addEventListener('click', this.leaveGame.bind(this));             // btns.$btnLeave.
-                $btnPause.addEventListener('click', this.pauseGame.bind(this));             // btns.$btnPause.
-                $btnCancel.addEventListener('click', this.cancelGame.bind(this));           // btns.$btnCancel.
+                btns.$btnGameList.addEventListener('click', this.goToGameList.bind(this));       // btns.$btnGameList.
+                btns.$btnStart.addEventListener('click', this.startGame.bind(this));             // btns.$btnStart.
+                btns.$btnConnect.addEventListener('click', this.joinAsRandom.bind(this));        // btns.$btnConnect.
+                btns.$btnConnectPolice.addEventListener('click', this.joinAsPolice.bind(this));  // btns.$btnConnectPolice.
+                btns.$btnConnectThief.addEventListener('click', this.joinAsThief.bind(this));    // btns.$btnConnectThief.
+                btns.$btnLeave.addEventListener('click', this.leaveGame.bind(this));             // btns.$btnLeave.
+                btns.$btnPause.addEventListener('click', this.pauseGame.bind(this));             // btns.$btnPause.
+                btns.$btnCancel.addEventListener('click', this.cancelGame.bind(this));           // btns.$btnCancel.
 
                 $(window).on('keydown', function(event) {
                     if ($lastKey === event.keyCode) {
