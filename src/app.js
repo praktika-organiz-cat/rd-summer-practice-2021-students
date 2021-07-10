@@ -885,16 +885,18 @@
             };
             GameView.prototype.bindButtons = function () {
                 // TODO Task 3.1 повешайте обработчики событий
-                // var btns = this.btns;
-                // var $lastKey = -1;
-                // btns.$btnGameList.
-                // btns.$btnStart.
-                // btns.$btnConnect.
-                // btns.$btnConnectPolice.
-                // btns.$btnConnectThief.
-                // btns.$btnLeave.
-                // btns.$btnPause.
-                // btns.$btnCancel.
+                var btns = this.btns;
+                var $lastKey = -1;
+
+                $btnGameList.addEventListener('click', this.goToGameList.bind(this));       // btns.$btnGameList.
+                $btnStart.addEventListener('click', this.startGame.bind(this));             // btns.$btnStart.
+                $btnConnect.addEventListener('click', this.joinAsRandom.bind(this));        // btns.$btnConnect.
+                $btnConnectPolice.addEventListener('click', this.joinAsPolice.bind(this));  // btns.$btnConnectPolice.
+                $btnConnectThief.addEventListener('click', this.joinAsThief.bind(this));    // btns.$btnConnectThief.
+                $btnLeave.addEventListener('click', this.leaveGame.bind(this));             // btns.$btnLeave.
+                $btnPause.addEventListener('click', this.pauseGame.bind(this));             // btns.$btnPause.
+                $btnCancel.addEventListener('click', this.cancelGame.bind(this));           // btns.$btnCancel.
+
                 $(window).on('keydown', function(event) {
                     if ($lastKey === event.keyCode) {
                         return;
