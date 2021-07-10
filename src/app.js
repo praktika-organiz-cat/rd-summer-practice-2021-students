@@ -759,7 +759,7 @@
                  */
                 return {
                     
-                   $gameCaption: $('gameCaption'),
+                   $gameCaption: $('#gameCaption'),
                     $switchTimer: $('#progressBar'),
                     team1: {
                         $container: $('#containerid1'),
@@ -777,23 +777,12 @@
                         },
                        
                      mapBuffer: null,
-                     $mapCanvas ,
+                     $mapCanvas: $('#map'),
                      mapCellSize: 25
                 };
             }
             function getButtons() {
                 // TODO Task1.2 Объявление переменных и их связка с DOM
-
-             /*   <button id="btnList" class="btn-green" onclick="">К списку игр</button>
-                <button id="btnStart" class="btn-green" onclick="">Старт</button>
-                <button id="btnStop" class="btn-green" onclick="">Пауза</button>
-                <button id="btnJoin" class="btn-dialog"onclick="">Подключение</button>
-                <button id="btnPolice" class="btn-dialog"onclick="">Подключение к полиции</button>
-                <button id="btnThieves" class="btn-dialog"onclick="">Подключение к мошенникам</button>
-               <!--  <button id="btnLeave" class="btn-dialog"onclick="">Отключение</button>
-                <button id="btnReconnect" class="btn-dialog"onclick="">Перезапуск</button> -->
-                <button id="btnCancel" class="btn-warn" onclick="">Отменить игру</button>
-                <button id="btnExit" class="btn-warn" onclick="">Выход</button> */
 
                 return {
                     $btnGameList: $('#stbtnList'), //К списку игр
