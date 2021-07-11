@@ -5,10 +5,12 @@
             <title>Полицейские и  мошенники</title>
                
             <!--  TODO: Раскомментировать при начале работы с сервером -->
-        <script src="modernizr.js"></script>
-        <script src="/js/jquery.js"></script>
-        <script src="/js/jquery.signalR.js"></script>
-        <script src="/js/gameApi.js"></script>
+        <script type="text/javascript" src="modernizr.js"></script>
+        <script type="text/javascript" src="/js/jquery.js"></script>
+        <script type="text/javascript" src="/js/jquery.signalR.js"></script>
+        <script type="text/javascript" src="utils.js"></script>
+        <script type="text/javascript" src="/js/gameApi.js"></script>
+        
             <link rel="stylesheet" href="style.css" type="text/css" />
     </head>
 
@@ -150,6 +152,8 @@
               
                <div id="gameCaption" class="team-data-label"> </div>
                <div id="gameCaptionStatus" class="game-caption-status"></div>
+               <div id="loading"> </div>
+               <div id="loadError"></div>
             </div>
             <div class="center">
                 <canvas id="map" class="map" ></canvas>
@@ -253,7 +257,8 @@
         </div>
 
         <!--  TODO: Раскомментировать при начале работы с сервером -->
-<script src="app.js"></script>
+<script type="text/javascript" src="app.js"></script>
+
 <script>
     (function() {
         var gameApi = new GameApi();

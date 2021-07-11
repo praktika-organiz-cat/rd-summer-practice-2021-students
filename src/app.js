@@ -1,5 +1,6 @@
 'use strict';
 // utilities
+
 (function(app) {
     (function(utils) {
         utils.getStatusName = function (statusId) {
@@ -799,12 +800,12 @@
                 // TODO Task1.3 Объявление переменных и их связка с DOM
                 return {
                     imgHeart: $('#img_heart').get(0),
-                    imgCoin: $('#img_Coin').get(0),
-                    imgPolice: $('#img_Police').get(0),
-                    imgPoliceSelft: $('#img_PoliceSelft').get(0),
-                    imgThief: $('#img_Thief').get(0),
-                    imgThiefSelf: $('#img_ThiefSelf').get(0),
-                    imgSwitch: $('#img_Switch').get(0)
+                    imgCoin: $('#img_coin').get(0),
+                    imgPolice: $('#img_police').get(0),
+                    imgPoliceSelf: $('#img_police_self').get(0),
+                    imgThief: $('#img_thief').get(0),
+                    imgThiefSelf: $('#img_thief_self').get(0),
+                    imgSwitch: $('#img_switch').get(0)
                 };
             }
             function setMapCanvasSizing($canvas, width, height) {
@@ -856,7 +857,7 @@
             function GameView($container, $loading, $error, gameState) {
                 this.imgRotationAngle = 0;
                 this.imgRotationPeriod = 10;
-                this.imgRotationTimer = null;
+                this.imgRotationTimer = 0;
                 this.$container = $container;
                 this.$loading = $loading;
                 this.$error = $error;
@@ -968,7 +969,7 @@
                             this.state.game.beginMove(GameApi.MoveDirection.right);
                             break;
                         case 'ArrowDown':
-                            event.prevenssstDefault();
+                            event.preventDefault();
                             this.state.game.beginMove(GameApi.MoveDirection.bottom);
                             break;
                     }
@@ -1020,7 +1021,14 @@
 
                 ctx.translate(x * cellSize + halfCell, y * cellSize + halfCell);
                 ctx.rotate(this.imgRotationAngle * Math.PI/180);
-                ctx.drawImage(img, 2 - halfCell, 2 - halfCell, cellSize - 4, cellSize - 4);
+                if (!img) {
+                    console.log(img, this.imgs, police, self, this.imgs.imgPoliceSelf, this.imgs.imgPolice, 
+                        this.imgs.imgThiefSelf, this.imgs.imgThief);
+                        debugger;
+                        ctx.drawImage(img, 2 - halfCell, 2 - halfCell, cellSize - 4, cellSize - 4);   
+                    }
+                else    {
+                ctx.drawImage(img, 2 - halfCell, 2 - halfCell, cellSize - 4, cellSize - 4);}
 
                 ctx.restore();
             };
@@ -1186,27 +1194,27 @@
                 /**
                  * TODO: Task 9. Опишите доступность элементов при загрузке игры $container $error $loading
                  */
-               /* utils.removeClasses($loading, 'hidden') //тк ShowLoading
+               utils.removeClasses($loading, 'hidden') //тк ShowLoading
                 utils.addClasses($containerGame, 'hidden')
-                utils.addClasses($error, 'hidden') */
+                utils.addClasses($error, 'hidden')  
                
             };
             GameView.prototype.showError = function () {
                 /**
                  * TODO: Task 10. Опишите доступность элементов при загрузке игры $container $error $loading
                  */
-                 /*utils.addClasses($loading, 'hidden') 
+                 utils.addClasses($loading, 'hidden') 
                  utils.addClasses($containerGame, 'hidden') 
-                 utils.removeClasses($error, 'hidden') //тк ShowError*/
+                 utils.removeClasses($error, 'hidden') //тк ShowError
                 
             };
             GameView.prototype.show = function () {
                 /**
                  * TODO: Task 11. Опишите доступность элементов при загрузке игры $container $error $loading
                  */
-                /* utils.addClasses($loading, 'hidden') 
+                utils.addClasses($loading, 'hidden') 
                  utils.removeClasses($containerGame, 'hidden') //тк Show
-                 utils.addClasses($error, 'hidden') */
+                 utils.addClasses($error, 'hidden') 
                
             };
 
