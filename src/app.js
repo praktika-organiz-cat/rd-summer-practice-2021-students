@@ -1155,11 +1155,7 @@
                  const currentUser = this.state.gameApi.questor.user;
                  const isOwner = currentUser === this.state.owner.id;
                  currentUserId = currentUserId || this.state.getPlayer;
-                 btns= btns || this.btns ;
-
-
-                 
- 
+                 btns = btns || this.btns ;                 
             };
             GameView.prototype.showLoading = function () {
                 /**
