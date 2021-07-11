@@ -817,10 +817,10 @@
                 $canvas.height=height;
                 $canvas.style.height=height; */
 
-                $canvas.style.width = `${width}px`;
-                $canvas.style.height = `${height}px`;
-                $canvas.width = `${width}`;
-                $canvas.height = `${height}`;
+                $canvas.css("width", width + "px")
+                .css("height", height + "px")
+                .attr("width", width + "px")
+                .attr("height", height + "px");
                 return $canvas;
             }
             function drawMapField(canvas, map, width, height, cellSize) {
@@ -934,7 +934,7 @@
                     this.state.game.join(GameApi.GameTeamRole.thief);
                 }.bind(this));
                 btns.$btnLeave.click(function () {
-                    this.state.game.start();
+                    this.state.game.leave();
                 }.bind(this));
                 btns.$btnPause.click(function () {
                     this.state.game.pause();
@@ -1067,7 +1067,7 @@
                     .empty()
                     .append($(app.utils.t(
                         //"<div class='game-caption-name'> {name} <span class='game-caption-status game-caption-status-{status}'>{statusName}</span></div>",
-                        "<div id='gameCaption' class='team-data-label'> {name} </div> <div id='gameCaptionStatus' class='game-caption-status'> {statusName} </div>",
+                        "<div id='gameCaption' class='team-data-label'> Название игры: <br> {name} </div> <div id='gameCaptionStatus' class='game-caption-status'> Статус: <br> {statusName} </div>",
                         {name: name, status: status, statusName: app.utils.getStatusName(status)})));
             };
             GameView.prototype.setTimer = function (data) {
@@ -1095,7 +1095,7 @@
                  */
                 return $(app.utils.t(
                     "<div id='player{playerId}' class='game-player game-player-status-{status}'>" +
-                        "<span class='game-player-name'>{name}</span>" +
+                        "<span class='game-player-name'>Игрок {name}</span>" +
                         " [<span class='game-player-coins'>{coins}</span>;" +
                         "<span class='game-player-lives'>{lives}</span>;" +
                         "<span class='game-player-deaths'>{deaths}</span>]" +
@@ -1189,6 +1189,7 @@
                /* utils.removeClasses($loading, 'hidden') //тк ShowLoading
                 utils.addClasses($containerGame, 'hidden')
                 utils.addClasses($error, 'hidden') */
+           
             };
             GameView.prototype.showError = function () {
                 /**
@@ -1197,6 +1198,7 @@
                  /*utils.addClasses($loading, 'hidden') 
                  utils.addClasses($containerGame, 'hidden') 
                  utils.removeClasses($error, 'hidden') //тк ShowError*/
+                
             };
             GameView.prototype.show = function () {
                 /**
@@ -1205,6 +1207,7 @@
                 /* utils.addClasses($loading, 'hidden') 
                  utils.removeClasses($containerGame, 'hidden') //тк Show
                  utils.addClasses($error, 'hidden') */
+               
             };
 
             return GameView;

@@ -42,8 +42,9 @@ body {
     font-family: 'Franklin Gothic Medium', Courier, monospace;
     }
     .center {
-    top: 15%; left: 225px; right: 225px; bottom: 6%;
+   top: 15%; left: 225px; right: 225px; bottom: 6%;
     box-sizing: border-box;
+    
     }
     .left {
     top: 15%; left: 0; bottom: 6%;
@@ -82,7 +83,11 @@ body {
     border: 1px solid #ccc;
     width:100%;
     height:100%;
+    margin: 0 auto;
     box-sizing: border-box;
+    display: flex;
+ 
+	
     }
     .team-data {
     text-align: left;
@@ -112,7 +117,7 @@ body {
     width: 100%;
     height: 100%;
     border: 0;
-    color: white;
+    color: rgb(226, 134, 211);
     padding: 0 1% 0 3%;
     font-size: 10px;
     box-sizing: border-box;
@@ -135,8 +140,14 @@ body {
 
     .game-caption-status {
         font-family: 'Franklin Gothic Medium', Courier, monospace;
+        color: #620d75f1;
     }
-
-    #gameCaptionStatus {
-        background-color: #6ceb3183;
-    }
+.hidden {
+    visibility: hidden;
+}
+.game-player {
+	background: #59066941;
+    border-radius: 3px 0 0 3px;
+    color:rgb(255, 255, 255);
+    font-family: 'Franklin Gothic Medium', Courier, monospace;
+}
