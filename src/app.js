@@ -1194,27 +1194,27 @@
                 /**
                  * TODO: Task 9. Опишите доступность элементов при загрузке игры $container $error $loading
                  */
-               utils.removeClasses($loading, 'hidden') //тк ShowLoading
-                utils.addClasses($containerGame, 'hidden')
-                utils.addClasses($error, 'hidden')  
+                 this.$loading .removeClass('hidden') //тк ShowLoading
+                 this.$container.addClass('hidden')
+                 this.$error.addClass('hidden')  
                
             };
             GameView.prototype.showError = function () {
                 /**
                  * TODO: Task 10. Опишите доступность элементов при загрузке игры $container $error $loading
                  */
-                 utils.addClasses($loading, 'hidden') 
-                 utils.addClasses($containerGame, 'hidden') 
-                 utils.removeClasses($error, 'hidden') //тк ShowError
+                 this.$loading .addClass('hidden') 
+                 this.$container.addClass('hidden') 
+                 this.$error.removeClass('hidden') //тк ShowError
                 
             };
             GameView.prototype.show = function () {
                 /**
                  * TODO: Task 11. Опишите доступность элементов при загрузке игры $container $error $loading
                  */
-                utils.addClasses($loading, 'hidden') 
-                 utils.removeClasses($containerGame, 'hidden') //тк Show
-                 utils.addClasses($error, 'hidden') 
+                 this.$loading .addClass('hidden') 
+                 this.$container .removeClass('hidden') //тк Show
+                 this.$error.addClass('hidden') 
                
             };
 
