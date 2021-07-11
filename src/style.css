@@ -136,3 +136,7 @@ body {
     .game-caption-status {
         font-family: 'Franklin Gothic Medium', Courier, monospace;
     }
+
+    #gameCaptionStatus {
+        background-color: #6ceb3183;
+    }

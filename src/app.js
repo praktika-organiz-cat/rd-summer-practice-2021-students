@@ -785,7 +785,7 @@
                 // TODO Task1.2 Объявление переменных и их связка с DOM
 
                 return {
-                    $btnGameList: $('#stbtnList'), //К списку игр
+                    $btnGameList: $('#btnList'), //К списку игр
                     $btnStart:$('#btnStart'),   //Старт
                     $btnConnect:$('#btnJoin'), //Подключение
                     $btnConnectPolice:$('#btnPolice'), //Подключение к полиции
@@ -909,14 +909,39 @@
                 var btns = this.btns;
                 var $lastKey = -1;
 
-                btns.$btnGameList.addEventListener('click', this.goToGameList.bind(this));       // btns.$btnGameList.
+              /*  btns.$btnGameList.addEventListener('click', this.goToGameList.bind(this));       // btns.$btnGameList.
                 btns.$btnStart.addEventListener('click', this.startGame.bind(this));             // btns.$btnStart.
                 btns.$btnConnect.addEventListener('click', this.joinAsRandom.bind(this));        // btns.$btnConnect.
                 btns.$btnConnectPolice.addEventListener('click', this.joinAsPolice.bind(this));  // btns.$btnConnectPolice.
                 btns.$btnConnectThief.addEventListener('click', this.joinAsThief.bind(this));    // btns.$btnConnectThief.
                 btns.$btnLeave.addEventListener('click', this.leaveGame.bind(this));             // btns.$btnLeave.
                 btns.$btnPause.addEventListener('click', this.pauseGame.bind(this));             // btns.$btnPause.
-                btns.$btnCancel.addEventListener('click', this.cancelGame.bind(this));           // btns.$btnCancel.
+                btns.$btnCancel.addEventListener('click', this.cancelGame.bind(this));           // btns.$btnCancel. */
+
+                btns.$btnGameList.click(function () {
+                    window.location.href = 'index.html';
+                }.bind(this));
+                btns.$btnStart.click(function () {
+                    this.state.game.start();
+                }.bind(this));
+                btns.$btnConnect.click(function () {
+                    this.state.game.join(GameApi.GameTeamRole.random);
+                }.bind(this));
+                btns.$btnConnectPolice.click(function () {
+                    this.state.game.join(GameApi.GameTeamRole.police);
+                }.bind(this));
+                btns.$btnConnectThief.click(function () {
+                    this.state.game.join(GameApi.GameTeamRole.thief);
+                }.bind(this));
+                btns.$btnLeave.click(function () {
+                    this.state.game.start();
+                }.bind(this));
+                btns.$btnPause.click(function () {
+                    this.state.game.pause();
+                }.bind(this));
+                btns.$btnCancel.click(function () {
+                    this.state.game.cancel();
+                }.bind(this));
 
                 $(window).on('keydown', function(event) {
                     if ($lastKey === event.keyCode) {
@@ -1042,7 +1067,7 @@
                     .empty()
                     .append($(app.utils.t(
                         //"<div class='game-caption-name'> {name} <span class='game-caption-status game-caption-status-{status}'>{statusName}</span></div>",
-                        "<div id='gameCaption' class='team-data-label'> {name} </div> <div id='gameCaptionStatus' class='game-caption-status'> {name] </div>",
+                        "<div id='gameCaption' class='team-data-label'> {name} </div> <div id='gameCaptionStatus' class='game-caption-status'> {statusName} </div>",
                         {name: name, status: status, statusName: app.utils.getStatusName(status)})));
             };
             GameView.prototype.setTimer = function (data) {
@@ -1161,25 +1186,25 @@
                 /**
                  * TODO: Task 9. Опишите доступность элементов при загрузке игры $container $error $loading
                  */
-                utils.removeClasses($loading, 'hidden') //тк ShowLoading
+               /* utils.removeClasses($loading, 'hidden') //тк ShowLoading
                 utils.addClasses($containerGame, 'hidden')
-                utils.addClasses($error, 'hidden')
+                utils.addClasses($error, 'hidden') */
             };
             GameView.prototype.showError = function () {
                 /**
                  * TODO: Task 10. Опишите доступность элементов при загрузке игры $container $error $loading
                  */
-                 utils.addClasses($loading, 'hidden') 
+                 /*utils.addClasses($loading, 'hidden') 
                  utils.addClasses($containerGame, 'hidden') 
-                 utils.removeClasses($error, 'hidden') //тк ShowError
+                 utils.removeClasses($error, 'hidden') //тк ShowError*/
             };
             GameView.prototype.show = function () {
                 /**
                  * TODO: Task 11. Опишите доступность элементов при загрузке игры $container $error $loading
                  */
-                 utils.addClasses($loading, 'hidden') 
+                /* utils.addClasses($loading, 'hidden') 
                  utils.removeClasses($containerGame, 'hidden') //тк Show
-                 utils.addClasses($error, 'hidden') 
+                 utils.addClasses($error, 'hidden') */
             };
 
             return GameView;
