@@ -812,10 +812,15 @@
                  * TODO Task 2. Опишите функцию которая задаст размеры игрового поля
                  */
                 // <canvas id="map" width=​"300" height="300"></canvas>; //тег добавлен в html файл
-                $canvas.width=width;
+               /* $canvas.width=width;
                 $canvas.style.width=width;
                 $canvas.height=height;
-                $canvas.style.height=height;
+                $canvas.style.height=height; */
+
+                $canvas.style.width = `${width}px`;
+                $canvas.style.height = `${height}px`;
+                $canvas.width = `${width}`;
+                $canvas.height = `${height}`;
                 return $canvas;
             }
             function drawMapField(canvas, map, width, height, cellSize) {
@@ -920,7 +925,7 @@
                     /**
                      * TODO Task 4. Вместо event.keyCode начните использовать event.key
                      */
-                    switch (event.key) {
+                            switch (event.key) {
                         case  ' ':        
                             event.preventDefault();
                             this.state.game.stopMoving();
@@ -1151,11 +1156,6 @@
                  *    this.state.getPlayer(currentUserId) - пользователь в игре?
                  *    this.btns - кнопки тут
                  */
-                 status = status || this.state.status;
-                 const currentUser = this.state.gameApi.questor.user;
-                 const isOwner = currentUser === this.state.owner.id;
-                 currentUserId = currentUserId || this.state.getPlayer;
-                 btns = btns || this.btns ;                 
             };
             GameView.prototype.showLoading = function () {
                 /**
@@ -1170,16 +1170,16 @@
                  * TODO: Task 10. Опишите доступность элементов при загрузке игры $container $error $loading
                  */
                  utils.addClasses($loading, 'hidden') 
-                 utils.removeClasses($containerGame, 'hidden') //тк ShowError
-                 utils.addClasses($error, 'hidden')
+                 utils.addClasses($containerGame, 'hidden') 
+                 utils.removeClasses($error, 'hidden') //тк ShowError
             };
             GameView.prototype.show = function () {
                 /**
                  * TODO: Task 11. Опишите доступность элементов при загрузке игры $container $error $loading
                  */
                  utils.addClasses($loading, 'hidden') 
-                 utils.addClasses($containerGame, 'hidden') 
-                 utils.removeClasses($error, 'hidden') //тк Show
+                 utils.removeClasses($containerGame, 'hidden') //тк Show
+                 utils.addClasses($error, 'hidden') 
             };
 
             return GameView;

@@ -3,11 +3,16 @@
     <head>
         <meta charset="utf-8">
             <title>Полицейские и  мошенники</title>
-                <!--from server-->
-                <script src="../js/jquery.js" type="text/javascript"></script><!--required-->
-                <script src="../js/jquery.signalR.js" type="text/javascript"></script><!--required-->
-                <script src="../js/gameApi.js" type="text/javascript"></script><!--required-->
-                <!---->
+                <!--
+                <script src="../js/jquery.js" type="text/javascript"></script>
+                <script src="../js/jquery.signalR.js" type="text/javascript"></script>
+                <script src="../js/gameApi.js" type="text/javascript"></script>
+                -->
+            <!--  TODO: Раскомментировать при начале работы с сервером -->
+        <script src="modernizr.js"></script>
+        <script src="/js/jquery.js"></script>
+        <script src="/js/jquery.signalR.js"></script>
+        <script src="/js/gameApi.js"></script>
             <link rel="stylesheet" href="style.css" type="text/css" />
     </head>
 
@@ -15,8 +20,6 @@
         <div class="container dark"  style="">
                 <div class="header">
                     <h1 style="color: rgb(101, 17, 112);">Полицейские и мошенники</h1>
-                
-                            
                             <div style="color: rgba(76, 0, 130, 0.493);">Оставшееся время до смены ролей</div>
                     <div class="progress">
                         <div class="progress-bar" id="progressBar" style="width: 0%;">
@@ -26,8 +29,7 @@
 
          <!-- <div id="containerid1" class="left team-data">  общий контейнер-->
             <div id="container" class="left team-data">
-                <div id="gameCaption" class="team-data-label">Название игры: </div>
-                <div id="gameCaptionStatus" class="game-caption-status">Статус: </div>
+               
 
                             <br>
                 <div id="containerid1" class="team-box1">
@@ -146,7 +148,9 @@
 
 
             <div class="right">
-                <textarea class="log-box dark" id="log" readonly></textarea>
+               <!-- <textarea class="log-box dark" id="log" readonly></textarea> -->
+               <div id="gameCaption" class="team-data-label">Название игры: </div>
+               <div id="gameCaptionStatus" class="game-caption-status">Статус: </div>
             </div>
             <div class="center">
                 <canvas id="map" class="map" ></canvas>
@@ -168,9 +172,25 @@
             </div>
         </div>
 
-        <script src="../js/jsHelper.js" type="text/javascript"></script>       
+       <!-- <script src="../js/jsHelper.js" type="text/javascript"></script>       
         <script src="../js/wrapper.js" type="text/javascript"></script>
-        <script src="game.js" type="text/javascript"></script>
+        <script src="game.js" type="text/javascript"></script>-->
+
+        <!--  TODO: Раскомментировать при начале работы с сервером -->
+<script src="app.js"></script>
+<script>
+    (function() {
+        var gameApi = new GameApi();
+        gameApi.questor.on("unauthorized", function () {
+            window.location.replace("../login");
+        });
+        gameApi.questor.login();
+        var gameState = new app.game.GameState(gameApi);
+        new app.game.GameView($("#game"), $("#loading"), $("#loadError"), gameState);
+        gameState.request();
+    })();
+
+</script>
     </body>
     
 </html>
