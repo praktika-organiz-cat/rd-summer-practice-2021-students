@@ -869,19 +869,35 @@
                  *              повешайте обработчики событий на кнопки
                  *              нажатия на кнопки это событие click
                  */
+                
                 // var c = this.state.callbacks;
+                var c = this.state.callbacks;
                 // c.captionChanged
+                c.captionChanged.add(function (name, status){this.setGameCaption(name, status);}.bind(this))
                 // c.invalidGame
+                c.invalidGame.add(function () {this.showError(); }.bind(this));
                 // c.mapChanged
+                c.mapChanged.add(function (map) {this.updateMap(map); }.bind(this));
                 // c.playerChanged
+                c.playerChanged.add(function (player) {this.updatePlayer(player); }.bind(this));
                 // c.statusChanged
+                c.statusChanged.add(function (status) {this.setButtons(status);}.bind(this));
                 // c.synced
+                c.synced.add(function () {this.show();}.bind(this));
                 // c.syncing
+                c.syncing.add(function () {this.showLoading();}.bind(this));
                 // c.teamCaptionChanged
+                c.teamCaptionChanged.add(function (team){this.updateTeamCaption(team)}.bind(this))
                 // c.teamCoinsChanged
+                c.teamCoinsChanged.add(function (team) {this.updateTeamCoins(team);}.bind(this));
                 // c.teamLivesChanged
+                c.teamLivesChanged.add(function (team) {this.updateTeamLives(team);}.bind(this));
                 // c.teamPlayersChanged
+                c.teamPlayersChanged.add(function (team){this.updateTeam(team)}.bind(this))
                 // c.timerChanged
+                c.timerChanged.add(function (data) {this.setTimer(data);}.bind(this));
+
+
             };
             GameView.prototype.bindButtons = function () {
                 // TODO Task 3.1 повешайте обработчики событий
