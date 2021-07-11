@@ -1112,7 +1112,7 @@
                             "<span class='game-team-role game-team-role-{role}'>{roleName}</span>" +
                         "</div>", {
                             role: role,
-                            roleName: team.role === GameApi.GameTeamRole.police ? "полиция" : "мошенники",
+                            roleName: team.role === GameApi.GameTeamRole.police ? "Полиция" : "Мошенники",
                             name: team.name
                         }
                     ));
