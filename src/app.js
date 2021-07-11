@@ -920,8 +920,8 @@
                     /**
                      * TODO Task 4. Вместо event.keyCode начните использовать event.key
                      */
-                    switch (event.key) {
-                        case  ' ':
+                            switch (event.key) {
+                        case  ' ':        
                             event.preventDefault();
                             this.state.game.stopMoving();
                             break;
