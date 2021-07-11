@@ -920,7 +920,7 @@
                     /**
                      * TODO Task 4. Вместо event.keyCode начните использовать event.key
                      */
-                            switch (event.key) {
+                    switch (event.key) {
                         case  ' ':        
                             event.preventDefault();
                             this.state.game.stopMoving();
@@ -1151,6 +1151,15 @@
                  *    this.state.getPlayer(currentUserId) - пользователь в игре?
                  *    this.btns - кнопки тут
                  */
+                 status = status || this.state.status;
+                 const currentUser = this.state.gameApi.questor.user;
+                 const isOwner = currentUser === this.state.owner.id;
+                 currentUserId = currentUserId || this.state.getPlayer;
+                 btns= btns || this.btns ;
+
+
+                 
+ 
             };
             GameView.prototype.showLoading = function () {
                 /**
