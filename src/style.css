@@ -44,6 +44,9 @@ body {
     .center {
    top: 15%; left: 225px; right: 225px; bottom: 6%;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
     }
     .left {
