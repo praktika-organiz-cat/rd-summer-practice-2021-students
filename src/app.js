@@ -1189,7 +1189,7 @@
                /* utils.removeClasses($loading, 'hidden') //тк ShowLoading
                 utils.addClasses($containerGame, 'hidden')
                 utils.addClasses($error, 'hidden') */
-           
+               
             };
             GameView.prototype.showError = function () {
                 /**
