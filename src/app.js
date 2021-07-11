@@ -1036,7 +1036,8 @@
                 this.game.$gameCaption
                     .empty()
                     .append($(app.utils.t(
-                        "<div class='game-caption-name'> {name} <span class='game-caption-status game-caption-status-{status}'>{statusName}</span></div>",
+                        //"<div class='game-caption-name'> {name} <span class='game-caption-status game-caption-status-{status}'>{statusName}</span></div>",
+                        "<div id='gameCaption' class='team-data-label'> {name} </div> <div id='gameCaptionStatus' class='game-caption-status'> {name] </div>",
                         {name: name, status: status, statusName: app.utils.getStatusName(status)})));
             };
             GameView.prototype.setTimer = function (data) {
