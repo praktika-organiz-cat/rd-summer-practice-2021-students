@@ -1,5 +1,6 @@
 'use strict';
 // utilities
+
 (function(app) {
     (function(utils) {
         utils.getStatusName = function (statusId) {
@@ -758,56 +759,69 @@
                  *  можно использовать $('selector')
                  */
                 return {
-                    // $gameCaption: ,
-                    // $switchTimer: ,
-                    // team1: {
-                    //     $container: ,
-                    //     $caption: ,
-                    //     $players: ,
-                    //     $lives: ,
-                    //     $coins:
-                    // },
-                    // team2: {
-                    //     $container: ,
-                    //     $caption: ,
-                    //     $players: ,
-                    //     $lives: ,
-                    //     $coins:
-                    // },
-                    // mapBuffer: null,
-                    // $mapCanvas: ,
-                    // mapCellSize: 25
+                    
+                   $gameCaption: $('#gameCaption'),
+                    $switchTimer: $('#game-timer'),
+                    team1: {
+                        $container: $('#containerid1'),
+                        $caption: $('#ftName'),
+                        $players: $('#team1users'),
+                        $lives: $('#ftLifes'),
+                        $coins: $('#ftScore'),
+                        },
+                    team2: {
+                        $container: $('#containerid2'),
+                        $caption: $('#stName'),
+                        $players: $('#team2users'),
+                        $lives: $('#stLifes'),
+                        $coins: $('#stScore'),
+                        },
+                       
+                     mapBuffer: null,
+                     $mapCanvas: $('#map'),
+                     mapCellSize: 25
                 };
             }
             function getButtons() {
                 // TODO Task1.2 Объявление переменных и их связка с DOM
+
                 return {
-                    // $btnGameList:,
-                    // $btnStart:,
-                    // $btnConnect:,
-                    // $btnConnectPolice:,
-                    // $btnConnectThief:,
-                    // $btnLeave:,
-                    // $btnPause:,
-                    // $btnCancel:
+                    $btnGameList: $('#btnList'), //К списку игр
+                    $btnStart:$('#btnStart'),   //Старт
+                    $btnConnect:$('#btnJoin'), //Подключение
+                    $btnConnectPolice:$('#btnPolice'), //Подключение к полиции
+                    $btnConnectThief:$('#btnThieves'), //Подключение к мошенницам
+                    $btnLeave:$('#btnExit'), //Выход
+                    $btnPause:$('#btnStop'), //Пауза
+                    $btnCancel:$('#btnCancel'), //Отменить игру
                 };
             }
             function getImages() {
                 // TODO Task1.3 Объявление переменных и их связка с DOM
                 return {
-                    // imgHeart: ,
-                    // imgCoin: ,
-                    // imgPolice: ,
-                    // imgPoliceSelf: ,
-                    // imgThief: ,
-                    // imgThiefSelf: ,
-                    // imgSwitch:
+                    imgHeart: $('#img_heart').get(0),
+                    imgCoin: $('#img_coin').get(0),
+                    imgPolice: $('#img_police').get(0),
+                    imgPoliceSelf: $('#img_police_self').get(0),
+                    imgThief: $('#img_thief').get(0),
+                    imgThiefSelf: $('#img_thief_self').get(0),
+                    imgSwitch: $('#img_switch').get(0)
                 };
             }
             function setMapCanvasSizing($canvas, width, height) {
                 /**
                  * TODO Task 2. Опишите функцию которая задаст размеры игрового поля
                  */
+                // <canvas id="map" width=​"300" height="300"></canvas>; //тег добавлен в html файл
+               /* $canvas.width=width;
+                $canvas.style.width=width;
+                $canvas.height=height;
+                $canvas.style.height=height; */
+
+                $canvas.css("width", width + "px")
+                .css("height", height + "px")
+                .attr("width", width + "px")
+                .attr("height", height + "px");
                 return $canvas;
             }
             function drawMapField(canvas, map, width, height, cellSize) {
@@ -843,7 +857,7 @@
             function GameView($container, $loading, $error, gameState) {
                 this.imgRotationAngle = 0;
                 this.imgRotationPeriod = 10;
-                this.imgRotationTimer = null;
+                this.imgRotationTimer = 0;
                 this.$container = $container;
                 this.$loading = $loading;
                 this.$error = $error;
@@ -861,32 +875,75 @@
                  *              повешайте обработчики событий на кнопки
                  *              нажатия на кнопки это событие click
                  */
+                
                 // var c = this.state.callbacks;
+                var c = this.state.callbacks;
                 // c.captionChanged
+                c.captionChanged.add(function (name, status){this.setGameCaption(name, status);}.bind(this))
                 // c.invalidGame
+                c.invalidGame.add(function () {this.showError(); }.bind(this));
                 // c.mapChanged
+                c.mapChanged.add(function (map) {this.updateMap(map); }.bind(this));
                 // c.playerChanged
+                c.playerChanged.add(function (player) {this.updatePlayer(player); }.bind(this));
                 // c.statusChanged
+                c.statusChanged.add(function (status) {this.setButtons(status);}.bind(this));
                 // c.synced
+                c.synced.add(function () {this.show();}.bind(this));
                 // c.syncing
+                c.syncing.add(function () {this.showLoading();}.bind(this));
                 // c.teamCaptionChanged
+                c.teamCaptionChanged.add(function (team){this.updateTeamCaption(team)}.bind(this))
                 // c.teamCoinsChanged
+                c.teamCoinsChanged.add(function (team) {this.updateTeamCoins(team);}.bind(this));
                 // c.teamLivesChanged
+                c.teamLivesChanged.add(function (team) {this.updateTeamLives(team);}.bind(this));
                 // c.teamPlayersChanged
+                c.teamPlayersChanged.add(function (team){this.updateTeam(team)}.bind(this))
                 // c.timerChanged
+                c.timerChanged.add(function (data) {this.setTimer(data);}.bind(this));
+
+
             };
             GameView.prototype.bindButtons = function () {
                 // TODO Task 3.1 повешайте обработчики событий
-                // var btns = this.btns;
-                // var $lastKey = -1;
-                // btns.$btnGameList.
-                // btns.$btnStart.
-                // btns.$btnConnect.
-                // btns.$btnConnectPolice.
-                // btns.$btnConnectThief.
-                // btns.$btnLeave.
-                // btns.$btnPause.
-                // btns.$btnCancel.
+                var btns = this.btns;
+                var $lastKey = -1;
+
+              /*  btns.$btnGameList.addEventListener('click', this.goToGameList.bind(this));       // btns.$btnGameList.
+                btns.$btnStart.addEventListener('click', this.startGame.bind(this));             // btns.$btnStart.
+                btns.$btnConnect.addEventListener('click', this.joinAsRandom.bind(this));        // btns.$btnConnect.
+                btns.$btnConnectPolice.addEventListener('click', this.joinAsPolice.bind(this));  // btns.$btnConnectPolice.
+                btns.$btnConnectThief.addEventListener('click', this.joinAsThief.bind(this));    // btns.$btnConnectThief.
+                btns.$btnLeave.addEventListener('click', this.leaveGame.bind(this));             // btns.$btnLeave.
+                btns.$btnPause.addEventListener('click', this.pauseGame.bind(this));             // btns.$btnPause.
+                btns.$btnCancel.addEventListener('click', this.cancelGame.bind(this));           // btns.$btnCancel. */
+
+                btns.$btnGameList.click(function () {
+                    window.location.href = 'index.html';
+                }.bind(this));
+                btns.$btnStart.click(function () {
+                    this.state.game.start();
+                }.bind(this));
+                btns.$btnConnect.click(function () {
+                    this.state.game.join(GameApi.GameTeamRole.random);
+                }.bind(this));
+                btns.$btnConnectPolice.click(function () {
+                    this.state.game.join(GameApi.GameTeamRole.police);
+                }.bind(this));
+                btns.$btnConnectThief.click(function () {
+                    this.state.game.join(GameApi.GameTeamRole.thief);
+                }.bind(this));
+                btns.$btnLeave.click(function () {
+                    this.state.game.leave();
+                }.bind(this));
+                btns.$btnPause.click(function () {
+                    this.state.game.pause();
+                }.bind(this));
+                btns.$btnCancel.click(function () {
+                    this.state.game.cancel();
+                }.bind(this));
+
                 $(window).on('keydown', function(event) {
                     if ($lastKey === event.keyCode) {
                         return;
@@ -894,24 +951,24 @@
                     /**
                      * TODO Task 4. Вместо event.keyCode начните использовать event.key
                      */
-                    switch (event.keyCode) {
-                        case 32:
+                            switch (event.key) {
+                        case  ' ':        
                             event.preventDefault();
                             this.state.game.stopMoving();
                             break;
-                        case 37:
+                        case 'ArrowLeft':
                             event.preventDefault();
                             this.state.game.beginMove(GameApi.MoveDirection.left);
                             break;
-                        case 38:
+                        case 'ArrowUp':
                             event.preventDefault();
                             this.state.game.beginMove(GameApi.MoveDirection.top);
                             break;
-                        case 39:
+                        case 'ArrowRight':
                             event.preventDefault();
                             this.state.game.beginMove(GameApi.MoveDirection.right);
                             break;
-                        case 40:
+                        case 'ArrowDown':
                             event.preventDefault();
                             this.state.game.beginMove(GameApi.MoveDirection.bottom);
                             break;
@@ -964,7 +1021,14 @@
 
                 ctx.translate(x * cellSize + halfCell, y * cellSize + halfCell);
                 ctx.rotate(this.imgRotationAngle * Math.PI/180);
-                ctx.drawImage(img, 2 - halfCell, 2 - halfCell, cellSize - 4, cellSize - 4);
+                if (!img) {
+                    console.log(img, this.imgs, police, self, this.imgs.imgPoliceSelf, this.imgs.imgPolice, 
+                        this.imgs.imgThiefSelf, this.imgs.imgThief);
+                        debugger;
+                        ctx.drawImage(img, 2 - halfCell, 2 - halfCell, cellSize - 4, cellSize - 4);   
+                    }
+                else    {
+                ctx.drawImage(img, 2 - halfCell, 2 - halfCell, cellSize - 4, cellSize - 4);}
 
                 ctx.restore();
             };
@@ -1010,7 +1074,8 @@
                 this.game.$gameCaption
                     .empty()
                     .append($(app.utils.t(
-                        "<div class='game-caption-name'>{name} <span class='game-caption-status game-caption-status-{status}'>{statusName}</span></div>",
+                        //"<div class='game-caption-name'> {name} <span class='game-caption-status game-caption-status-{status}'>{statusName}</span></div>",
+                        "<div id='gameCaption' class='team-data-label'> Название игры: <br> {name} </div> <div id='gameCaptionStatus' class='game-caption-status'> Статус: <br> {statusName} </div>",
                         {name: name, status: status, statusName: app.utils.getStatusName(status)})));
             };
             GameView.prototype.setTimer = function (data) {
@@ -1038,7 +1103,7 @@
                  */
                 return $(app.utils.t(
                     "<div id='player{playerId}' class='game-player game-player-status-{status}'>" +
-                        "<span class='game-player-name'>{name}</span>" +
+                        "<span class='game-player-name'>Игрок {name}</span>" +
                         " [<span class='game-player-coins'>{coins}</span>;" +
                         "<span class='game-player-lives'>{lives}</span>;" +
                         "<span class='game-player-deaths'>{deaths}</span>]" +
@@ -1080,7 +1145,7 @@
                             "<span class='game-team-role game-team-role-{role}'>{roleName}</span>" +
                         "</div>", {
                             role: role,
-                            roleName: team.role === GameApi.GameTeamRole.police ? "полиция" : "мошенники",
+                            roleName: team.role === GameApi.GameTeamRole.police ? "Полиция" : "Мошенники",
                             name: team.name
                         }
                     ));
@@ -1124,21 +1189,133 @@
                  *    this.state.getPlayer(currentUserId) - пользователь в игре?
                  *    this.btns - кнопки тут
                  */
+                 var currentUser = this.state.gameApi.questor.user.id;
+                 var isOwner = currentUser == this.state.owner.id;
+                 var isAdmin = this.state.gameApi.questor.user.isAdmin;
+                 var connected = this.state.getPlayer(currentUser);
+                    
+                    if (this.state.status == GameApi.GameStatus.canceled )   {
+                        alert('Игра отменена')
+                    }
+
+
+                    if (this.state.status == GameApi.GameStatus.finished )   {
+                        alert('Игра завершена ')
+                    }
+
+                    if (this.state.status == GameApi.GameStatus.canceled || this.state.status == GameApi.GameStatus.finished) {
+                        this.btns.$btnStart.addClass("hidden");
+                        this.btns.$btnLeave.addClass("hidden");
+                        this.btns.$btnPause.addClass("hidden");
+                        this.btns.$btnCancel.addClass("hidden");
+                        this.btns.$btnConnect.addClass("hidden");
+                        this.btns.$btnConnectThief.addClass("hidden");
+                        this.btns.$btnConnectPolice.addClass("hidden");
+                        return;
+                    }
+                    if (this.state.status == GameApi.GameStatus.open || this.state.status == GameApi.GameStatus.ready) {
+                        
+                        this.btns.$btnPause.addClass("hidden");
+                        this.btns.$btnStart.addClass("hidden");
+                        this.btns.$btnCancel.addClass("hidden");
+
+                            if (isOwner) {
+                                this.btns.$btnStart.removeClass("hidden");
+                                this.btns.$btnCancel.removeClass("hidden");
+                            }
+
+                                if (isAdmin) {
+                                    this.btns.$btnCancel.removeClass("hidden");
+                                }
+                                    if (connected) {
+                                        this.btns.$btnLeave.removeClass("hidden");
+                                        this.btns.$btnConnect.addClass("hidden");
+                                        this.btns.$btnConnectThief.addClass("hidden");
+                                        this.btns.$btnConnectPolice.addClass("hidden");
+                                    }
+
+                                    else {
+
+                                        this.btns.$btnLeave.addClass("hidden");
+                                        this.btns.$btnConnect.removeClass("hidden");
+                                        this.btns.$btnConnectThief.removeClass("hidden");
+                                        this.btns.$btnConnectPolice.removeClass("hidden");
+                                    }
+                     return;
+                    }
+
+
+                    
+                    if  (this.state.status == GameApi.GameStatus.inProcess) {
+                        alert('Игра началась')
+                    } 
+
+                    if (this.state.status == GameApi.GameStatus.starting ||
+                        this.state.status == GameApi.GameStatus.inProcess) {
+                        this.btns.$btnStart.addClass("hidden");
+                        this.btns.$btnLeave.addClass("hidden");
+                        this.btns.$btnConnect.addClass("hidden");
+                        this.btns.$btnConnectThief.addClass("hidden");
+                        this.btns.$btnConnectPolice.addClass("hidden");
+                        this.btns.$btnPause.addClass("hidden");
+                        this.btns.$btnCancel.addClass("hidden");
+
+                            if (isOwner) {
+                            this.btns.$btnPause.removeClass("hidden");
+                            this.btns.$btnCancel.removeClass("hidden");
+                            }
+                                if (isAdmin) {
+                                    this.btns.$btnCancel.removeClass("hidden");
+                                }
+         
+                    }
+                    
+                    if (this.state.status == GameApi.GameStatus.paused) {
+                        alert('Игра была поставлена на паузу')
+                        this.btns.$btnStart.addClass("hidden");
+                        this.btns.$btnLeave.addClass("hidden");
+                        this.btns.$btnConnect.addClass("hidden");
+                        this.btns.$btnConnectThief.addClass("hidden");
+                        this.btns.$btnConnectPolice.addClass("hidden");
+                        this.btns.$btnPause.addClass("hidden");
+                        this.btns.$btnCancel.addClass("hidden");
+
+
+                            if (isOwner) {
+                                this.btns.$btnPause.addClass("hidden");  
+                                this.btns.$btnStart.removeClass("hidden");
+                            }
+                    }
+
+
+            
             };
             GameView.prototype.showLoading = function () {
                 /**
                  * TODO: Task 9. Опишите доступность элементов при загрузке игры $container $error $loading
                  */
+                 this.$loading .removeClass('hidden') //тк ShowLoading
+                 this.$container.addClass('hidden')
+                 this.$error.addClass('hidden')  
+               
             };
             GameView.prototype.showError = function () {
                 /**
                  * TODO: Task 10. Опишите доступность элементов при загрузке игры $container $error $loading
                  */
+                 this.$loading .addClass('hidden') 
+                 this.$container.addClass('hidden') 
+                 this.$error.removeClass('hidden') //тк ShowError
+                
             };
             GameView.prototype.show = function () {
                 /**
                  * TODO: Task 11. Опишите доступность элементов при загрузке игры $container $error $loading
                  */
+                 this.$loading .addClass('hidden') 
+                 this.$container .removeClass('hidden') //тк Show
+                 this.$error.addClass('hidden') 
+               
             };
 
             return GameView;
@@ -1151,4 +1328,4 @@
  *      для показа сообщения можно использовать alert
  *      можно попробовать сделать это используя модальные окна, только если игра уже работает
  *      https://getbootstrap.com/docs/3.3/javascript/#modals
- */
+ */ 

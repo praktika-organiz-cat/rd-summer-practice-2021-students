@@ -9,6 +9,7 @@ body {
     }
     .dark {
     background:#d2a8d6b7;
+    
     }
     .container {
     position: fixed;
@@ -18,11 +19,12 @@ body {
     height: 90%;
     width: 90%;
     border: 0;
-    box-shadow: 0 0 25px 5px #ccc;
+    box-shadow: 0 0 25px 10px rgb(250, 216, 244);
     color: rgb(255, 255, 255);
     min-height: 460px;
     min-width: 770px;
     max-width: 1150px;
+
     }
     .header, .center, .footer, .left, .right, .middle {
     position: absolute;
@@ -40,8 +42,12 @@ body {
     font-family: 'Franklin Gothic Medium', Courier, monospace;
     }
     .center {
-    top: 15%; left: 225px; right: 225px; bottom: 6%;
+   top: 15%; left: 225px; right: 225px; bottom: 6%;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
     }
     .left {
     top: 15%; left: 0; bottom: 6%;
@@ -80,11 +86,20 @@ body {
     border: 1px solid #ccc;
     width:100%;
     height:100%;
+    margin: 0 auto;
     box-sizing: border-box;
+    display: flex;
+ 
+	
     }
     .team-data {
     text-align: left;
+    
     }
+    .team-box {
+        text-align: left;
+   
+        }
     .team-data-label {
     font-size: 110%;
     font-family: 'Franklin Gothic Medium', Courier, monospace;
@@ -105,7 +120,7 @@ body {
     width: 100%;
     height: 100%;
     border: 0;
-    color: white;
+    color: rgb(255, 255, 255);
     padding: 0 1% 0 3%;
     font-size: 10px;
     box-sizing: border-box;
@@ -115,15 +130,32 @@ body {
     }
     .progress {
     margin: 0 225px 0 225px;
-    background-color: #EFEFEF;
+    
     height: 20px;
-    border-radius: 4px;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+   
     }
     .progress-bar {
     border-radius: 3px 0 0 3px;
     background-image: linear-gradient(to bottom, #86e68ba6 0, #12bd37ad 100%);
     height: 100%;
-    line-height: 20px;
+    line-height: 20px;}
+
+    .game-caption-status {
+        font-family: 'Franklin Gothic Medium', Courier, monospace;
+        color: #620d75f1;
     }
-    
+.hidden {
+    visibility: hidden;
+}
+.game-player {
+	background: #59066941;
+    border-radius: 3px 0 0 3px;
+    color:rgb(255, 255, 255);
+    font-family: 'Franklin Gothic Medium', Courier, monospace;
+}
+
+#game-timer {
+	font-size: 30px;
+	color: #680c74a6;
+	font-weight: bold;
+}
