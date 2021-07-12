@@ -812,11 +812,6 @@
                 /**
                  * TODO Task 2. Опишите функцию которая задаст размеры игрового поля
                  */
-                // <canvas id="map" width=​"300" height="300"></canvas>; //тег добавлен в html файл
-               /* $canvas.width=width;
-                $canvas.style.width=width;
-                $canvas.height=height;
-                $canvas.style.height=height; */
 
                 $canvas.css("width", width + "px")
                 .css("height", height + "px")
@@ -909,15 +904,6 @@
                 // TODO Task 3.1 повешайте обработчики событий
                 var btns = this.btns;
                 var $lastKey = -1;
-
-              /*  btns.$btnGameList.addEventListener('click', this.goToGameList.bind(this));       // btns.$btnGameList.
-                btns.$btnStart.addEventListener('click', this.startGame.bind(this));             // btns.$btnStart.
-                btns.$btnConnect.addEventListener('click', this.joinAsRandom.bind(this));        // btns.$btnConnect.
-                btns.$btnConnectPolice.addEventListener('click', this.joinAsPolice.bind(this));  // btns.$btnConnectPolice.
-                btns.$btnConnectThief.addEventListener('click', this.joinAsThief.bind(this));    // btns.$btnConnectThief.
-                btns.$btnLeave.addEventListener('click', this.leaveGame.bind(this));             // btns.$btnLeave.
-                btns.$btnPause.addEventListener('click', this.pauseGame.bind(this));             // btns.$btnPause.
-                btns.$btnCancel.addEventListener('click', this.cancelGame.bind(this));           // btns.$btnCancel. */
 
                 btns.$btnGameList.click(function () {
                     window.location.href = 'index.html';
@@ -1074,7 +1060,7 @@
                 this.game.$gameCaption
                     .empty()
                     .append($(app.utils.t(
-                        //"<div class='game-caption-name'> {name} <span class='game-caption-status game-caption-status-{status}'>{statusName}</span></div>",
+                       
                         "<div id='gameCaption' class='team-data-label'> Название игры: <br> {name} </div> <div id='gameCaptionStatus' class='game-caption-status'> Статус: <br> {statusName} </div>",
                         {name: name, status: status, statusName: app.utils.getStatusName(status)})));
             };
@@ -1278,7 +1264,7 @@
                 /**
                  * TODO: Task 9. Опишите доступность элементов при загрузке игры $container $error $loading
                  */
-                 this.$loading .removeClass('hidden') //тк ShowLoading
+                 this.$loading .removeClass('hidden') 
                  this.$container.addClass('hidden')
                  this.$error.addClass('hidden')  
                
@@ -1289,7 +1275,7 @@
                  */
                  this.$loading .addClass('hidden') 
                  this.$container.addClass('hidden') 
-                 this.$error.removeClass('hidden') //тк ShowError
+                 this.$error.removeClass('hidden') 
                 
             };
             GameView.prototype.show = function () {
@@ -1297,7 +1283,7 @@
                  * TODO: Task 11. Опишите доступность элементов при загрузке игры $container $error $loading
                  */
                  this.$loading .addClass('hidden') 
-                 this.$container .removeClass('hidden') //тк Show
+                 this.$container .removeClass('hidden') 
                  this.$error.addClass('hidden') 
                
             };
