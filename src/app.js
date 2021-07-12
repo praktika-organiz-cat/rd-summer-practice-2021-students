@@ -1193,16 +1193,83 @@
                  var isOwner = currentUser == this.state.owner.id;
                  var isAdmin = this.state.gameApi.questor.user.isAdmin;
                  var connected = this.state.getPlayer(currentUser);
-                 if (this.state.status == GameApi.GameStatus.canceled || this.state.status == GameApi.GameStatus.finished) {
-                    this.btns.$btnStart.addClass("hidden");
-                    this.btns.$btnLeave.addClass("hidden");
-                    this.btns.$btnPause.addClass("hidden");
-                    this.btns.$btnCancel.addClass("hidden");
-                    this.btns.$btnConnect.addClass("hidden");
-                    this.btns.$btnConnectThief.addClass("hidden");
-                    this.btns.$btnConnectPolice.addClass("hidden");
+                    if (this.state.status == GameApi.GameStatus.canceled || this.state.status == GameApi.GameStatus.finished) {
+                        this.btns.$btnStart.addClass("hidden");
+                        this.btns.$btnLeave.addClass("hidden");
+                        this.btns.$btnPause.addClass("hidden");
+                        this.btns.$btnCancel.addClass("hidden");
+                        this.btns.$btnConnect.addClass("hidden");
+                        this.btns.$btnConnectThief.addClass("hidden");
+                        this.btns.$btnConnectPolice.addClass("hidden");
+                        return;
+                    }
+                    if (this.state.status == GameApi.GameStatus.open || this.state.status == GameApi.GameStatus.ready) {
+                        this.btns.$btnPause.addClass("hidden");
+                        this.btns.$btnStart.addClass("hidden");
+                        this.btns.$btnCancel.addClass("hidden");
+                        
+                            if (isOwner) {
+                                this.btns.$btnStart.removeClass("hidden");
+                                this.btns.$btnCancel.removeClass("hidden");
+                            }
+
+                                if (isAdmin) {
+                                    this.btns.$btnCancel.removeClass("hidden");
+                                }
+                                    if (connected) {
+                                        this.btns.$btnLeave.removeClass("hidden");
+                                        this.btns.$btnConnect.addClass("hidden");
+                                        this.btns.$btnConnectThief.addClass("hidden");
+                                        this.btns.$btnConnectPolice.addClass("hidden");
+                                    }
+
+                                    else {
+
+                                        this.btns.$btnLeave.addClass("hidden");
+                                        this.btns.$btnConnect.removeClass("hidden");
+                                        this.btns.$btnConnectThief.removeClass("hidden");
+                                        this.btns.$btnConnectPolice.removeClass("hidden");
+                                    }
                      return;
-                 }
+                    }
+
+
+
+                    if (this.state.status == GameApi.GameStatus.starting ||
+                        this.state.status == GameApi.GameStatus.inProcess) {
+                        this.btns.$btnStart.addClass("hidden");
+                        this.btns.$btnLeave.addClass("hidden");
+                        this.btns.$btnConnect.addClass("hidden");
+                        this.btns.$btnConnectThief.addClass("hidden");
+                        this.btns.$btnConnectPolice.addClass("hidden");
+                        this.btns.$btnPause.addClass("hidden");
+                        this.btns.$btnCancel.addClass("hidden");
+
+                            if (isOwner) {
+                            this.btns.$btnPause.removeClass("hidden");
+                            this.btns.$btnCancel.removeClass("hidden");
+                            }
+                                if (isAdmin) {
+                                    this.btns.$btnCancel.removeClass("hidden");
+                                }
+         
+                    }
+                    
+                    if (this.state.status == GameApi.GameStatus.paused) {
+                        this.btns.$btnStart.addClass("hidden");
+                        this.btns.$btnLeave.addClass("hidden");
+                        this.btns.$btnConnect.addClass("hidden");
+                        this.btns.$btnConnectThief.addClass("hidden");
+                        this.btns.$btnConnectPolice.addClass("hidden");
+                        this.btns.$btnPause.addClass("hidden");
+                        this.btns.$btnCancel.addClass("hidden");
+
+
+                            if (isOwner) {
+                                this.btns.$btnPause.addClass("hidden");  
+                                this.btns.$btnStart.removeClass("hidden");
+                            }
+                    }
 
 
             
