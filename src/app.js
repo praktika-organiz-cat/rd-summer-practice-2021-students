@@ -1189,6 +1189,23 @@
                  *    this.state.getPlayer(currentUserId) - пользователь в игре?
                  *    this.btns - кнопки тут
                  */
+                 var currentUser = this.state.gameApi.questor.user.id;
+                 var isOwner = currentUser == this.state.owner.id;
+                 var isAdmin = this.state.gameApi.questor.user.isAdmin;
+                 var connected = this.state.getPlayer(currentUser);
+                 if (this.state.status == GameApi.GameStatus.canceled || this.state.status == GameApi.GameStatus.finished) {
+                    this.btns.$btnStart.addClass("hidden");
+                    this.btns.$btnLeave.addClass("hidden");
+                    this.btns.$btnPause.addClass("hidden");
+                    this.btns.$btnCancel.addClass("hidden");
+                    this.btns.$btnConnect.addClass("hidden");
+                    this.btns.$btnConnectThief.addClass("hidden");
+                    this.btns.$btnConnectPolice.addClass("hidden");
+                     return;
+                 }
+
+
+            
             };
             GameView.prototype.showLoading = function () {
                 /**
