@@ -812,6 +812,11 @@
                 /**
                  * TODO Task 2. Опишите функцию которая задаст размеры игрового поля
                  */
+                // <canvas id="map" width=​"300" height="300"></canvas>; //тег добавлен в html файл
+               /* $canvas.width=width;
+                $canvas.style.width=width;
+                $canvas.height=height;
+                $canvas.style.height=height; */
 
                 $canvas.css("width", width + "px")
                 .css("height", height + "px")
@@ -904,6 +909,15 @@
                 // TODO Task 3.1 повешайте обработчики событий
                 var btns = this.btns;
                 var $lastKey = -1;
+
+              /*  btns.$btnGameList.addEventListener('click', this.goToGameList.bind(this));       // btns.$btnGameList.
+                btns.$btnStart.addEventListener('click', this.startGame.bind(this));             // btns.$btnStart.
+                btns.$btnConnect.addEventListener('click', this.joinAsRandom.bind(this));        // btns.$btnConnect.
+                btns.$btnConnectPolice.addEventListener('click', this.joinAsPolice.bind(this));  // btns.$btnConnectPolice.
+                btns.$btnConnectThief.addEventListener('click', this.joinAsThief.bind(this));    // btns.$btnConnectThief.
+                btns.$btnLeave.addEventListener('click', this.leaveGame.bind(this));             // btns.$btnLeave.
+                btns.$btnPause.addEventListener('click', this.pauseGame.bind(this));             // btns.$btnPause.
+                btns.$btnCancel.addEventListener('click', this.cancelGame.bind(this));           // btns.$btnCancel. */
 
                 btns.$btnGameList.click(function () {
                     window.location.href = 'index.html';
@@ -1060,7 +1074,7 @@
                 this.game.$gameCaption
                     .empty()
                     .append($(app.utils.t(
-                       
+                        //"<div class='game-caption-name'> {name} <span class='game-caption-status game-caption-status-{status}'>{statusName}</span></div>",
                         "<div id='gameCaption' class='team-data-label'> Название игры: <br> {name} </div> <div id='gameCaptionStatus' class='game-caption-status'> Статус: <br> {statusName} </div>",
                         {name: name, status: status, statusName: app.utils.getStatusName(status)})));
             };
@@ -1179,6 +1193,16 @@
                  var isOwner = currentUser == this.state.owner.id;
                  var isAdmin = this.state.gameApi.questor.user.isAdmin;
                  var connected = this.state.getPlayer(currentUser);
+                    
+                    if (this.state.status == GameApi.GameStatus.canceled )   {
+                        alert('Игра отменена')
+                    }
+
+
+                    if (this.state.status == GameApi.GameStatus.finished )   {
+                        alert('Игра завершена ')
+                    }
+
                     if (this.state.status == GameApi.GameStatus.canceled || this.state.status == GameApi.GameStatus.finished) {
                         this.btns.$btnStart.addClass("hidden");
                         this.btns.$btnLeave.addClass("hidden");
@@ -1190,10 +1214,11 @@
                         return;
                     }
                     if (this.state.status == GameApi.GameStatus.open || this.state.status == GameApi.GameStatus.ready) {
+                        
                         this.btns.$btnPause.addClass("hidden");
                         this.btns.$btnStart.addClass("hidden");
                         this.btns.$btnCancel.addClass("hidden");
-                        
+
                             if (isOwner) {
                                 this.btns.$btnStart.removeClass("hidden");
                                 this.btns.$btnCancel.removeClass("hidden");
@@ -1220,6 +1245,10 @@
                     }
 
 
+                    
+                    if  (this.state.status == GameApi.GameStatus.inProcess) {
+                        alert('Игра началась')
+                    } 
 
                     if (this.state.status == GameApi.GameStatus.starting ||
                         this.state.status == GameApi.GameStatus.inProcess) {
@@ -1242,6 +1271,7 @@
                     }
                     
                     if (this.state.status == GameApi.GameStatus.paused) {
+                        alert('Игра была поставлена на паузу')
                         this.btns.$btnStart.addClass("hidden");
                         this.btns.$btnLeave.addClass("hidden");
                         this.btns.$btnConnect.addClass("hidden");
@@ -1264,7 +1294,7 @@
                 /**
                  * TODO: Task 9. Опишите доступность элементов при загрузке игры $container $error $loading
                  */
-                 this.$loading .removeClass('hidden') 
+                 this.$loading .removeClass('hidden') //тк ShowLoading
                  this.$container.addClass('hidden')
                  this.$error.addClass('hidden')  
                
@@ -1275,7 +1305,7 @@
                  */
                  this.$loading .addClass('hidden') 
                  this.$container.addClass('hidden') 
-                 this.$error.removeClass('hidden') 
+                 this.$error.removeClass('hidden') //тк ShowError
                 
             };
             GameView.prototype.show = function () {
@@ -1283,7 +1313,7 @@
                  * TODO: Task 11. Опишите доступность элементов при загрузке игры $container $error $loading
                  */
                  this.$loading .addClass('hidden') 
-                 this.$container .removeClass('hidden') 
+                 this.$container .removeClass('hidden') //тк Show
                  this.$error.addClass('hidden') 
                
             };
@@ -1298,4 +1328,4 @@
  *      для показа сообщения можно использовать alert
  *      можно попробовать сделать это используя модальные окна, только если игра уже работает
  *      https://getbootstrap.com/docs/3.3/javascript/#modals
- */
+ */ 
